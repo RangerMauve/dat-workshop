@@ -4,7 +4,7 @@
 // - How to identify peers
 //
 // Go to the root of the workshop folder and run:
-// node ./Hypercore/02_Load_someones_drive.js
+// node ./Hypercore/02_Load_a_core.js
 
 // First, you'll want to load the SDK
 const SDK = require('dat-sdk')

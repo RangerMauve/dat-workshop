@@ -61,17 +61,17 @@ async function main () {
     const flood1 = new HyperFlood({
       // hyper-flood needs to know what your public key is in the swarm layer
       // This is used for verifying your identity
-      id: keyPair1.key
+      id: keyPair1.publicKey
     })
     core1.registerExtension('example', flood1.extension())
 
     const flood2 = new HyperFlood({
-      id: keyPair2.key
+      id: keyPair2.publicKey
     })
     core2.registerExtension('example', flood2.extension())
 
     const flood3 = new HyperFlood({
-      id: keyPair3.key
+      id: keyPair3.publicKey
     })
     core3.registerExtension('example', flood3.extension())
 

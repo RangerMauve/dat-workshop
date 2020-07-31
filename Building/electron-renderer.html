@@ -1,0 +1,12 @@
+<title>Dat-SDK example</title>
+<script>
+  const SDK = require('electron').remote.require('dat-sdk')
+
+  main()
+
+  function main() {
+    const {Hyperdrive} = await SDK({persist: false})
+
+    window.Hyperdrive = Hyperdrive
+  }
+</script>

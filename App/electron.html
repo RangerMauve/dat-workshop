@@ -1,0 +1,95 @@
+<title>Dat-SDK Example App</title>
+<style>
+  /*
+		This sets up a UI with the text output filling most of the screen
+		And a form at the bottom with the input and send button
+  */
+  html, body {
+   margin: 0px;
+   padding: 0px;
+   width: 100%;
+   height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  textarea {
+   flex: 1;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+  }
+
+  input {
+    flex: 1
+  }
+</style>
+<textarea readonly id="output"></textarea>
+<form id="inputform">
+  <input id="input">
+  <button>Send</button>
+</form>
+<script>
+  // Load electron's `remote` API
+  // This lets us load modules from the node.js context
+  const {remote} = require('electron')
+
+  // Load up the SDK and the app core
+  const SDK = remote.require('dat-sdk')
+  const Core = remote.require('./core')
+
+  // We'll get references to all the UI elements we need
+	const form = $('#inputform')
+	const input = $('#input')
+	const output = $('#output')
+
+  // Since we're doing async stuff, we should wrap it
+  main()
+  
+	async function main() {
+	  // Initialize the SDK without persisting data
+    const sdk = await SDK({persist: false})
+
+    // Initialize the App core
+    const core = await Core(sdk)
+
+  // Listen for messages and log them to the output
+  core.on('message', ({ message, timestamp }, { key }) => {
+    const when = new Date(timestamp).toTimeString()
+    const who = key.toString('hex').slice(0, 4)
+    log(`${who}:\t${when}\n\t${message}`)
+  })
+
+  // Listen for new peers and log them to the output
+  core.on('found', ({ key }) => {
+    const who = key.toString('hex').slice(0, 4)
+    log(`New peer: ${who}`)
+  })
+
+    // Whenever the user submits the form, clear it
+    // Then send the text to the core API to propogate it
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+
+      const text = input.value
+      input.value = ''
+
+      core.write(text)
+    })
+	}
+
+  // Replacement for console.log that outputs to a textarea
+	function log(...args) {
+    output.value += args.join(' ') + '\n'
+	}
+
+function $(query) {
+  return document.querySelector(query)
+}
+</script>

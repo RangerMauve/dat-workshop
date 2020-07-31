@@ -1,0 +1,34 @@
+{
+  "name": "dat-workshop",
+  "version": "1.0.0",
+  "description": "A workshop for learning about dat-sdk and how to build p2p applications with it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-example-app": "electron ./App/electron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RangerMauve/dat-workshop.git"
+  },
+  "keywords": [
+    "dat",
+    "workshop",
+    "tutorial",
+    "p2p",
+    "hyperdrive",
+    "hypercore-protocol"
+  ],
+  "author": "rangermauve <ranger@mauve.moe> (https://mauve.moe/)",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/RangerMauve/dat-workshop/issues"
+  },
+  "homepage": "https://github.com/RangerMauve/dat-workshop#readme",
+  "dependencies": {
+    "dat-sdk": "^2.6.1",
+    "delay": "^4.4.0",
+    "electron": "^9.1.2",
+    "hyper-flood": "^1.1.0"
+  }
+}

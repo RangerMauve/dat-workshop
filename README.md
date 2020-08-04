@@ -1,7 +1,9 @@
 # dat-workshop
 A workshop for learning about dat-sdk and how to build p2p applications with it.
 
-Follow along with the README and go through the examples 
+Follow along with the README and go through the examples.
+
+There's also a [video](https://www.youtube.com/watch?v=HyHk4aImd_I&list=PL7sG5SCUNyeYx8wnfMOUpsh7rM_g0w_cu&index=20) recorded at 2020's Dat Conference which you can follow along with.
 
 ## 1. Why 🤔
 

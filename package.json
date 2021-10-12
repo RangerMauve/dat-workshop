@@ -28,7 +28,7 @@
   "dependencies": {
     "dat-sdk": "^2.6.1",
     "delay": "^4.4.0",
-    "electron": "^9.1.2",
+    "electron": "^11.5.0",
     "hyper-flood": "^1.1.0"
   }
 }
